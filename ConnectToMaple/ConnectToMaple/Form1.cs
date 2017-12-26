@@ -110,7 +110,7 @@ namespace ConnectToMaple
             str = "";
 
 
-            int a = Form2.bien_a, b =Form2.bien_b, c = Form2.bien_c;
+            float a = Form2.bien_a, b =Form2.bien_b, c = Form2.bien_c;
 
             try
             {

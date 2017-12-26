@@ -19,7 +19,7 @@ namespace ConnectToMaple
         {
             InitializeComponent();
         }
-        public static int bien_a = 0, bien_b = 0, bien_c = 0;
+        public static float bien_a = 0, bien_b = 0, bien_c = 0;
         private void btOCR_Click(object sender, EventArgs e)
         {
             
@@ -27,21 +27,15 @@ namespace ConnectToMaple
             {
 
                 var img = new Bitmap(openFileDialog.FileName);
-                var ocr = new TesseractEngine("./tessdata", "vie", EngineMode.Default);
+                var ocr = new TesseractEngine("./tessdata", "eng", EngineMode.Default);
                 var page = ocr.Process(img);
                 string equation = page.GetText();
                 var builder = new StringBuilder();
                 List<string> vetrai = new List<string>();
                 List<string> vephai = new List<string>();
-                int flag = 0, flagvetrai = 1;
+                int flagvetrai = 1;
                 string output = string.Empty;
                 output += equation + "\r\n";
-                if (!(equation.Contains("khảo sát") || equation.Contains("Khảo sát") || equation.Contains("khao sat") || equation.Contains("khảosát") || equation.Contains("khaosat") || equation.Contains("Khaosat") || equation.Contains("Khao sat")))
-                {
-                    output += "Bài toán khảo sát hàm số: ";
-                    txtResult.Text = output.ToString();
-                    // return;
-                }
 
                 equation = equation.Substring(equation.IndexOf(":") + 1);
                 //xoa khoang trang
@@ -78,8 +72,8 @@ namespace ConnectToMaple
                 }
                 builder.Clear();
                 string out2 = String.Empty;
-                int dkX = 0, bien3 = 0;
-                int bientam = 0;
+                float bien2 = 0, bienY = 0, bien1 = 0, bien0 = 0;
+                int bientam = 0, dkX = 0;
                 //Ve trai get bien
                 for (int i = 0; i < vetrai.Count; i++)
                 {
@@ -87,11 +81,20 @@ namespace ConnectToMaple
                     dkX = 0;
                     for (int j = 0; j < vetrai[i].Length; j++)
                     {
-                        out2 += vetrai[i].ElementAt(j).ToString();
+
+                        if (vetrai[i].ElementAt(j) == 'Y' || vetrai[i].ElementAt(j) == 'y')
+                        {
+                            dkX = 1;
+                            if (builder.ToString() == "" || builder.ToString() == "-" || builder.ToString() == "+" || builder.ToString() == "\n")
+                                builder.Append(1);
+                            Int32.TryParse(builder.ToString(), out bientam);
+                            bienY += bientam;
+                            break;
+                        }
                         if (vetrai[i].ElementAt(j) == 'X' || vetrai[i].ElementAt(j) == 'x')
                         {
                             dkX = 1;
-                            if (builder.ToString() == "" || builder.ToString() == "-" || builder.ToString() == "\n")
+                            if (builder.ToString() == "" || builder.ToString() == "-" || builder.ToString() == "+" || builder.ToString() == "\n")
                                 builder.Append(1);
                             if (j + 1 < vetrai[i].Length)
                             {
@@ -99,19 +102,13 @@ namespace ConnectToMaple
                                 if (vetrai[i].ElementAt(j + 1) == '2' || vetrai[i].ElementAt(j + 1) == '²')
                                 {
                                     Int32.TryParse(builder.ToString(), out bientam);
-                                    bien_a += bientam;
-                                    break;
-                                }
-                                if (vetrai[i].ElementAt(j + 1) == '3')
-                                {
-                                    Int32.TryParse(builder.ToString(), out bientam);
-                                    bien3 += bientam;
+                                    bien2 -= bientam;
                                     break;
                                 }
                             }
 
                             Int32.TryParse(builder.ToString(), out bientam);
-                            bien_b += bientam;
+                            bien1 -= bientam;
                             break;
 
                         }
@@ -120,7 +117,7 @@ namespace ConnectToMaple
                     if (dkX == 0)
                     {
                         Int32.TryParse(builder.ToString(), out bientam);
-                        bien_c += bientam;
+                        bien0 -= bientam;
                     }
                     builder.Clear();
                 }
@@ -131,11 +128,20 @@ namespace ConnectToMaple
                     dkX = 0;
                     for (int j = 0; j < vephai[i].Length; j++)
                     {
-                        out2 += vephai[i].ElementAt(j).ToString();
+
+                        if (vephai[i].ElementAt(j) == 'Y' || vephai[i].ElementAt(j) == 'y')
+                        {
+                            dkX = 1;
+                            if (builder.ToString() == "" || builder.ToString() == "-" || builder.ToString() == "+" || builder.ToString() == "\n")
+                                builder.Append(1);
+                            Int32.TryParse(builder.ToString(), out bientam);
+                            bienY -= bientam;
+                            break;
+                        }
                         if (vephai[i].ElementAt(j) == 'X' || vephai[i].ElementAt(j) == 'x')
                         {
                             dkX = 1;
-                            if (builder.ToString() == "" || builder.ToString() == "-" || builder.ToString() == "\n")
+                            if (builder.ToString() == "" || builder.ToString() == "-" || builder.ToString() == "+" || builder.ToString() == "\n")
                                 builder.Append(1);
                             if (j + 1 < vephai[i].Length)
                             {
@@ -143,19 +149,13 @@ namespace ConnectToMaple
                                 if (vephai[i].ElementAt(j + 1) == '2' || vephai[i].ElementAt(j + 1) == '²')
                                 {
                                     Int32.TryParse(builder.ToString(), out bientam);
-                                    bien_a -= bientam;
-                                    break;
-                                }
-                                if (vephai[i].ElementAt(j + 1) == '3')
-                                {
-                                    Int32.TryParse(builder.ToString(), out bientam);
-                                    bien3 -= bientam;
+                                    bien2 += bientam;
                                     break;
                                 }
                             }
 
                             Int32.TryParse(builder.ToString(), out bientam);
-                            bien_b -= bientam;
+                            bien1 += bientam;
                             break;
 
                         }
@@ -164,11 +164,17 @@ namespace ConnectToMaple
                     if (dkX == 0)
                     {
                         Int32.TryParse(builder.ToString(), out bientam);
-                        bien_c -= bientam;
+                        bien0 += bientam;
                     }
                     builder.Clear();
                 }
+                if (bienY != 1)
+                {
+                    bien0 = bien0 / bienY;
+                    bien1 = bien1 / bienY;
+                    bien2 = bien2 / bienY;
 
+                }
                 //Xuat du lieu test thu
                 int sizeOfList = vetrai.Count;
                 output += "Ve trai :\r\n";
@@ -181,9 +187,9 @@ namespace ConnectToMaple
                 {
                     output += vephai[i] + "\r\n";
                 }
-                output += "\r\nbien_c: " + bien_c + "\r\nbien_b: " + bien_b + "\r\nbien_a: " + bien_a + "\r\nBien3: " + bien3;
+                output += "\r\nBien0: " + bien0 + "\r\nBien1: " + bien1 + "\r\nBien2: " + bien2 + "\r\nBienY: " + bienY;
                 txtResult.Text = output;
-                //txtInput.Text = bien_a + "," + bien_b + "," + bien_c;
+                bien_a = bien2;  bien_b = bien1; bien_c = bien0;
 
             }
 
