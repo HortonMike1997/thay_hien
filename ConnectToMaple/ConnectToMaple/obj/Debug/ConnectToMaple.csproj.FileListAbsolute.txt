@@ -1,0 +1,17 @@
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\bin\Debug\ConnectToMaple.exe.config
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\bin\Debug\ConnectToMaple.exe
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\bin\Debug\ConnectToMaple.pdb
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\obj\Debug\ConnectToMaple.Form1.resources
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\obj\Debug\ConnectToMaple.Properties.Resources.resources
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\obj\Debug\ConnectToMaple.csproj.GenerateResource.Cache
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\obj\Debug\ConnectToMaple.exe
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\obj\Debug\ConnectToMaple.pdb
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\obj\Debug\ConnectToMaple.csprojResolveAssemblyReference.cache
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\bin\Debug\Microsoft.Web.XmlTransform.dll
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\bin\Debug\NuGet.Core.dll
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\bin\Debug\x64\liblept172.dll
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\bin\Debug\x64\libtesseract304.dll
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\bin\Debug\x86\liblept172.dll
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\bin\Debug\x86\libtesseract304.dll
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\bin\Debug\Tesseract.dll
+C:\Users\HortonMike\Desktop\ProjectC#\ConnectToMaple\ConnectToMaple\bin\Debug\Tesseract.xml
