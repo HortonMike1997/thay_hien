@@ -110,7 +110,7 @@ namespace ConnectToMaple
             str = "";
 
 
-            int a = 2, b = 4, c = 6;
+            int a = Form2.bien_a, b =Form2.bien_b, c = Form2.bien_c;
 
             try
             {
@@ -122,8 +122,8 @@ namespace ConnectToMaple
                     //sử dụng hàm Tong trong package TEST
                     String expr = "Tong(";
 
-                    expr += txtInput.Text;
-                    //expr += a + "," + b + "," + c;
+                    //expr += txtInput.Text;
+                    expr += a + "," + b + "," + c;
                     expr += ");";
 
                     IntPtr val = MapleEngine.EvalMapleStatement(kv, Encoding.ASCII.GetBytes(expr));
@@ -142,6 +142,7 @@ namespace ConnectToMaple
             NativeMethods.CreateGifFromEq(str, Path.Combine(tmp, "Eq2ImgWinForms.gif"));
             pictureBox1.Image = Image.FromFile(Path.Combine(tmp, "Eq2ImgWinForms.gif"));
             pictureBox2.Image = Image.FromFile(Path.Combine(tmp, "plot.jpg"));
+            
         }
 
         private void txtOutput_TextChanged(object sender, EventArgs e)
