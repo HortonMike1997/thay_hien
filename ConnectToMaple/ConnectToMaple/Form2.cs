@@ -22,7 +22,8 @@ namespace ConnectToMaple
         public static float bien_a = 0, bien_b = 0, bien_c = 0;
         private void btOCR_Click(object sender, EventArgs e)
         {
-            
+
+            //bien_a = 0; bien_b = 0; bien_c = 0;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
 
@@ -188,8 +189,13 @@ namespace ConnectToMaple
                     output += vephai[i] + "\r\n";
                 }
                 output += "\r\nBien0: " + bien0 + "\r\nBien1: " + bien1 + "\r\nBien2: " + bien2 + "\r\nBienY: " + bienY;
-                txtResult.Text = output;
+                //txtResult.Text = output;
                 bien_a = bien2;  bien_b = bien1; bien_c = bien0;
+                using (Form1 f2 = new Form1())
+                {
+                    f2.ShowDialog(this);
+                }
+                this.Close();
 
             }
 
@@ -197,10 +203,10 @@ namespace ConnectToMaple
 
         private void btswitch_Click(object sender, EventArgs e)
         {
-            using (Form1 f2 = new Form1())
-            {
-                f2.ShowDialog(this);
-            }
+            //using (Form1 f2 = new Form1())
+            //{
+            //    f2.ShowDialog(this);
+            //}
         }
     }
 }
